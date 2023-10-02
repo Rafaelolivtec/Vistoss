@@ -1,0 +1,344 @@
+db.Pessoa.insert({nome: "João", idade: 30, cargo: "Gerente", cidade: "São Paulo"})
+db.Pessoa.insert({nome: "Maria", idade: 25, cargo: "Analista", cidade: "Rio de Janeiro"})
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651369224e4c06ecb2438782")
+  }
+}
+
+db.Pessoa.insert({nome: "João", idade: 30, cargo: "Gerente", cidade: "São Paulo"})
+db.Pessoa.insert({nome: "Maria", idade: 25, cargo: "Analista", cidade: "Rio de Janeiro"})
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651369224e4c06ecb2438782")
+  }
+}
+for (let i = 1; i <= 10; i++) {
+  db.Pessoa.insert({
+    nome: "Pessoa " + i,
+    idade: Math.floor(Math.random() * 50) + 18, // Gera uma idade aleatória entre 18 e 68 anos
+    cargo: "Cargo " + i,
+    cidade: "Cidade " + i
+  })
+}
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651369444e4c06ecb243878c")
+  }
+}
+db.Pessoa.updateOne(
+  { cargo: "Gerente" },
+  {
+    $set: {
+      nome: "NOe",
+      endereco: "RUA MIRABOLANTE"
+    }
+  }
+)
+
+db.Pessoa.updateOne(
+  { cargo: "Gerente" },
+  {
+    $set: {
+      nome: "PEDRO ALCANTARA",
+      endereco: "RUA DAMASCO"
+    }
+  }
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateMany(
+  { nome: "Nome da Pessoa 1" }, 
+  {
+    $set: {
+      nome: "Novo Nome da Pessoa 1", 
+      endereco: "Novo Endereço da Pessoa 1" 
+    }
+  }
+)
+
+db.Pessoa.updateMany(
+  { nome: "Nome da Pessoa 2" }, 
+  {
+    $set: {
+      nome: "Novo Nome da Pessoa 2", 
+      endereco: "Novo Endereço da Pessoa 2" 
+    }
+  }
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.Pessoa.find(
+  { idade: { $gt: 25 } }, 
+  { _id: 0 }  
+)
+{
+  nome: 'joana',
+  idade: 28,
+  cargo: 'publicitaria',
+  cidade: 'esperança'
+}
+{
+  nome: 'jose',
+  idade: 40,
+  cargo: 'motorista',
+  cidade: 'Lagoa de cima'
+}
+{
+  nome: 'Mariajo',
+  idade: 58,
+  cargo: 'assistente',
+  cidade: 'patos'
+}
+{
+  nome: 'guimaroes',
+  idade: 44,
+  cargo: 'Gerente de dados',
+  cidade: 'souza'
+}
+{
+  nome: 'thiago',
+  idade: 33,
+  cargo: 'programador',
+  cidade: 'lagoa seca'
+}
+{
+  nome: 'PEDRO ALCANTARA',
+  idade: 30,
+  cargo: 'Gerente',
+  cidade: 'São Paulo',
+  endereco: 'RUA DAMASCO'
+}
+{
+  nome: 'Pessoa 1',
+  idade: 53,
+  cargo: 'Cargo 1',
+  cidade: 'Cidade 1'
+}
+{
+  nome: 'Pessoa 2',
+  idade: 56,
+  cargo: 'Cargo 2',
+  cidade: 'Cidade 2'
+}
+{
+  nome: 'Pessoa 3',
+  idade: 53,
+  cargo: 'Cargo 3',
+  cidade: 'Cidade 3'
+}
+{
+  nome: 'Pessoa 4',
+  idade: 38,
+  cargo: 'Cargo 4',
+  cidade: 'Cidade 4'
+}
+{
+  nome: 'Pessoa 5',
+  idade: 56,
+  cargo: 'Cargo 5',
+  cidade: 'Cidade 5'
+}
+{
+  nome: 'Pessoa 7',
+  idade: 55,
+  cargo: 'Cargo 7',
+  cidade: 'Cidade 7'
+}
+{
+  nome: 'Pessoa 8',
+  idade: 63,
+  cargo: 'Cargo 8',
+  cidade: 'Cidade 8'
+}
+{
+  nome: 'Pessoa 9',
+  idade: 29,
+  cargo: 'Cargo 9',
+  cidade: 'Cidade 9'
+}
+{
+  nome: 'Pessoa 10',
+  idade: 46,
+  cargo: 'Cargo 10',
+  cidade: 'Cidade 10'
+}
+db.Pessoa.aggregate([
+  {
+    $group: {
+      _id: "cidade",  
+      mediaIdade: { $avg: "$idade" } 
+    }
+  }
+])
+{
+  _id: 'cidade',
+  mediaIdade: 41.22222222222222
+}
+db.Setores.insertMany([
+  {
+    sigla: "TI",
+    descrição: "Tecnologia da Informação",
+    salário: 6000
+  },
+  {
+    sigla: "RH",
+    descrição: "Recursos Humanos",
+    salário: 4500
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65136a1e4e4c06ecb243878d"),
+    '1': ObjectId("65136a1e4e4c06ecb243878e")
+  }
+}
+db.Setores.insertMany([
+  {
+    sigla: "VND",
+    descrição: "Vendas",
+    salário: 5500
+  },
+  {
+    sigla: "ENG",
+    descrição: "Engenharia",
+    salário: 7000
+  },
+  {
+    sigla: "MKT",
+    descrição: "Marketing",
+    salário: 6000
+  },
+  {
+    sigla: "FIN",
+    descrição: "Finanças",
+    salário: 6500
+  }
+])
+
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65136a764e4c06ecb243878f"),
+    '1': ObjectId("65136a764e4c06ecb2438790"),
+    '2': ObjectId("65136a764e4c06ecb2438791"),
+    '3': ObjectId("65136a764e4c06ecb2438792")
+  }
+}
+db.Setores.aggregate([
+  {
+    $group: {
+      _id: null,
+      maiorSalario: { $max: "$salário" }
+    }
+  },
+  {
+    $lookup: {
+      from: "Setores",
+      localField: "maiorSalario",
+      foreignField: "salário",
+      as: "setorComMaiorSalario"
+    }
+  },
+  {
+    $unwind: "$setorComMaiorSalario"
+  },
+  {
+    $project: {
+      _id: 0,
+      "setorComMaiorSalario.sigla": 1,
+      "setorComMaiorSalario.descrição": 1,
+      "setorComMaiorSalario.salário": 1
+    }
+  }
+])
+{
+  setorComMaiorSalario: {
+    sigla: 'ENGE',
+    'descrição': 'Engenharia',
+    'salário': 7000
+  }
+}
+{
+  setorComMaiorSalario: {
+    sigla: 'ENG',
+    'descrição': 'Engenharia',
+    'salário': 7000
+  }
+}
+db.Setores.aggregate([
+  {
+    $group: {
+      _id: null,
+      menorSalario: { $min: "$salário" }
+    }
+  },
+  {
+    $lookup: {
+      from: "Setores",
+      localField: "menorSalario",
+      foreignField: "salário",
+      as: "setorComMenorSalario"
+    }
+  },
+  {
+    $unwind: "$setorComMenorSalario"
+  },
+  {
+    $project: {
+      _id: 0,
+      "setorComMenorSalario.sigla": 1,
+      "setorComMenorSalario.descrição": 1,
+      "setorComMenorSalario.salário": 1
+    }
+  }
+])
+{
+  setorComMenorSalario: {
+    sigla: 'RH',
+    'descrição': 'Recursos Humanos',
+    'salário': 4500
+  }
+}
+{
+  setorComMenorSalario: {
+    sigla: 'RH',
+    'descrição': 'Recursos Humanos',
+    'salário': 4500
+  }
+}
+db.Setores.aggregate([
+  {
+    $group: {
+      _id: null,
+      mediaSalario: { $avg: "$salário" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      mediaSalario: 1
+    }
+  }
+])
+{
+  mediaSalario: 5916.666666666667
+}
+Empresa
+Selection deleted
+
